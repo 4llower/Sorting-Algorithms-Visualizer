@@ -302,7 +302,7 @@ class GraphWin(tk.Canvas):
         self.__checkOpen()
         self.update_idletasks()
 
-    def getMouse(self):
+    def getMouse(self) -> object:
         """Wait for mouse click and return Point object representing
         the click"""
         self.update()  # flush any prior clicks
