@@ -1,1 +1,1 @@
-# Sorting algoritm visualizer
+# Sorting algorithm visualizer
