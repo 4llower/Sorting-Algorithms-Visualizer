@@ -1,5 +1,6 @@
 from graphics import *
 from mergeSort import mergeSorting
+from bubbleSort import bubbleSorting
 from drawing import Draw
 import random
 
@@ -16,15 +17,26 @@ def main():
     rectangles = []
 
     need_to_sort = [i for i in range(1, 241)]
-    random.shuffle(need_to_sort)
 
     canvas = GraphWin("Sort visualize", Width, Length)
     canvas.setBackground(black_color)
+
     try:
 
-        Visual = Draw(Length, Width, Stick_length, Diff_length, white_color, black_color, canvas, need_to_sort)
+        Visual = Draw(Length, Width, Stick_length, Diff_length, white_color, black_color, canvas, need_to_sort, 0.01)
+
+        #merge sort
+        random.shuffle(Visual.array)
         Visual.creating_retangles()
         mergeSorting(Visual, 0, len(Visual.array) - 1)
+
+        #bubble sort
+        Visual.delay = 0
+        random.shuffle(Visual.array)
+        Visual.creating_retangles()
+        bubbleSorting(Visual)
+
+
         Visual.canvas.getMouse()
 
     except GraphicsError:

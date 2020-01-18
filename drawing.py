@@ -1,7 +1,7 @@
 import time
 from graphics import *
 class Draw:
-    def __init__(self, Length, Width, Stick_length, Diff_length, white_color, black_color, canvas, array):
+    def __init__(self, Length, Width, Stick_length, Diff_length, white_color, black_color, canvas, array, delay):
         self.Length = Length
         self.Width = Width
         self.Stick_length = Stick_length
@@ -11,6 +11,7 @@ class Draw:
         self.canvas = canvas
         self.array = array
         self.rectangles = []
+        self.delay = delay
 
     def Stick(self, value, pos):
         return Rectangle(Point(pos * (self.Stick_length + self.Diff_length), self.Length),
@@ -20,7 +21,7 @@ class Draw:
 
         if (len(self.rectangles) != 0):
             for i in range(len(self.rectangles)):
-                self.rectangles[i].setFill(black_color)
+                self.rectangles[i].setFill(self.black_color)
             self.rectangles = []
 
         for i in range(len(self.array)):
@@ -31,7 +32,7 @@ class Draw:
             self.rectangles[i].draw(self.canvas)
 
     def visualize_swap(self, x, y):
-        time.sleep(0.025)
+        time.sleep(self.delay)
         self.rectangles[x].setFill(self.black_color)
         self.rectangles[y].setFill(self.black_color)
         self.array[x], self.array[y] = self.array[y], self.array[x]

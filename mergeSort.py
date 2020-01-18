@@ -1,4 +1,3 @@
-
 def mergeSorting(Visual, left, right):
 
     if (left == right):
