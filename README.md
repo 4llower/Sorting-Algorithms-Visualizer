@@ -1,1 +1,1 @@
-# sort-visualize-statistics
+# Sorting algorithm visualizer
