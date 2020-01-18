@@ -1,6 +1,7 @@
 from graphics import *
 from mergeSort import mergeSorting
 from bubbleSort import bubbleSorting
+from quickSort import quickSorting
 from drawing import Draw
 import random
 
@@ -23,12 +24,19 @@ def main():
 
     try:
 
-        Visual = Draw(Length, Width, Stick_length, Diff_length, white_color, black_color, canvas, need_to_sort, 0.01)
+        Visual = Draw(Length, Width, Stick_length, Diff_length, white_color, black_color, canvas, need_to_sort, 0)
 
         #merge sort
+        Visual.delay = 0.01
         random.shuffle(Visual.array)
         Visual.creating_retangles()
         mergeSorting(Visual, 0, len(Visual.array) - 1)
+
+        #quick sort
+        Visual.delay = 0.01
+        random.shuffle(Visual.array)
+        Visual.creating_retangles()
+        quickSorting(Visual, 0, len(Visual.array) - 1)
 
         #bubble sort
         Visual.delay = 0
