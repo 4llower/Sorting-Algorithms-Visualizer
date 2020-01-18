@@ -3,6 +3,8 @@ from mergeSort import mergeSorting
 from bubbleSort import bubbleSorting
 from quickSort import quickSorting
 from drawing import Draw
+from LSDsort import LSDsorting
+from countSort import countSorting
 import random
 
 # constants
@@ -37,6 +39,18 @@ def main():
         random.shuffle(Visual.array)
         Visual.creating_retangles()
         quickSorting(Visual, 0, len(Visual.array) - 1)
+
+        #LSD sort
+        #Visual.delay = 0.05
+        #random.shuffle(Visual.array)
+        #Visual.creating_retangles()
+        #LSDsorting(Visual)
+
+        #count sort
+        Visual.delay = 0.01
+        random.shuffle(Visual.array)
+        Visual.creating_retangles()
+        countSorting(Visual)
 
         #bubble sort
         Visual.delay = 0
