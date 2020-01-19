@@ -1,2 +1,0 @@
-def LSDsorting(Visual):
-    pass

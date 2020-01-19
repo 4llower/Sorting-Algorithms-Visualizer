@@ -1,13 +1,16 @@
-from graphics import *
-from mergeSort import mergeSorting
-from bubbleSort import bubbleSorting
-from quickSort import quickSorting
-from drawing import Draw
-import sys
-from LSDsort import LSDsorting
-from countSort import countSorting
-import random
+from graphics_sticks.graphics import *
+from graphics_sticks.drawing import Draw
+
+from sorting_algorithms.mergeSort import mergeSorting
+from sorting_algorithms.bubbleSort import bubbleSorting
+from sorting_algorithms.quickSort import quickSorting
+from sorting_algorithms.LSDsort import LSDsorting
+from sorting_algorithms.countSort import countSorting
+
 from PyQt5 import QtCore, QtGui, QtWidgets
+import sys
+import random
+
 
 # constants
 Length = 600
@@ -17,7 +20,6 @@ ValueOfSicks = 600
 white_color = color_rgb(255, 255, 255)
 black_color = color_rgb(0, 0, 0)
 # constants
-
 
 
 class Ui_MainWindow(object):
@@ -118,22 +120,17 @@ class Ui_MainWindow(object):
             pass
         self.end_sorting()
 
+
 def main():
+    temp = [i for i in range(1, ValueOfSicks)]
+    Visual = Draw(Length, Width, Stick_length, 0, white_color, black_color, temp, 0)
 
-    try:
-
-        temp = [i for i in range(1, ValueOfSicks)]
-        Visual = Draw(Length, Width, Stick_length, 0, white_color, black_color, temp, 0)
-
-        app = QtWidgets.QApplication(sys.argv)
-        MainWindow = QtWidgets.QMainWindow()
-        ui = Ui_MainWindow()
-        ui.setupUi(MainWindow, Visual)
-        MainWindow.show()
-        sys.exit(app.exec_())
-
-    except GraphicsError:
-        print("Success")
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow, Visual)
+    MainWindow.show()
+    sys.exit(app.exec_())
 
 
 if (__name__ == "__main__"):
