@@ -61,7 +61,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Sort Vizualiser"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Sort Visualizer"))
         self.mergeSortButton.setText(_translate("MainWindow", "Merge sort"))
         self.StatisticsButton.setText(_translate("MainWindow", "Statistics"))
         self.countSortButton.setText(_translate("MainWindow", "Count sort"))
