@@ -9,6 +9,7 @@ from sorting_algorithms.countSort import countSorting
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
+import math
 import random
 
 
@@ -55,6 +56,7 @@ class Ui_MainWindow(object):
         self.mergeSortButton.clicked.connect(self.make_merge_sort)
         self.bubbleSortButton.clicked.connect(self.make_bubble_sort)
         self.countSortButton.clicked.connect(self.make_count_sort)
+        self.StatisticsButton.clicked.connect(self.make_LSD_sort)
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -118,6 +120,17 @@ class Ui_MainWindow(object):
             bubbleSorting(self.Visual)
         except GraphicsError:
             pass
+        self.end_sorting()
+
+    def make_LSD_sort(self):
+        self.Visual.delay = 0
+        self.createWindow()
+        self.shuffling()
+        try:
+            LSDsorting(self.Visual, 0, len(self.Visual.array) - 1, 10 ** int(math.log10(max(self.Visual.array))))
+        except GraphicsError:
+            pass
+
         self.end_sorting()
 
 
