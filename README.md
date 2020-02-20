@@ -1,17 +1,18 @@
 # Sorting algorithm visualizer
 
-1st step
+This is app which show how sorting algorithms works.
+
+Clone reposiroty from github.
 ~~~
 git clone https://github.com/4llower/sort-visualize-statistics
 ~~~
 
-2nd step
+Install necessary libraries.
 ~~~
 pip install -r requirements.txt
 ~~~
 
-3rd step
-
+Get started.
 ~~~
 python main.py
 ~~~
