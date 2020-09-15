@@ -1,4 +1,4 @@
-# Sorting algorithm view_windowizer
+# Sorting algorithm visualizer
 
 This is app which show how sorting algorithms works.
 
@@ -21,3 +21,10 @@ pip install -r requirements.txt
 ~~~
 python main.py
 ~~~
+
+# Algorithms
+ - Bubble sorting **O(N^2)**
+ - Merge sorting **O(N*log2(N))**
+ - Quick sorting **O(N*log2(N))**
+ - Count sorting **O(N+*max(a1..aN)*)**
+ - Digit sorting **O(N*log10(max(a1..aN))*)**
