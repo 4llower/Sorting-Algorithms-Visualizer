@@ -27,4 +27,4 @@ python main.py
  - Merge sorting **O(N*log2(N))**
  - Quick sorting **O(N*log2(N))**
  - Count sorting **O(N+*max(a1..aN)*)**
- - Digit sorting **O(N*log10(max(a1..aN))*)**
+ - Digit sorting **O(N * log10( *max(a1..aN)* ))**
