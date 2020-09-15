@@ -54,7 +54,7 @@ class App(object):
 
     def retranslate_ui(self, main_window):
         _translate = QtCore.QCoreApplication.translate
-        main_window.setWindowTitle(_translate("main_window", "Sort view_windowizer"))
+        main_window.setWindowTitle(_translate("main_window", "Sorting visualizer"))
         self.mergeSortButton.setText(_translate("main_window", "Merge sort"))
         self.LSDSortButton.setText(_translate("main_window", "LSD Sort"))
         self.countSortButton.setText(_translate("main_window", "Count sort"))
@@ -62,7 +62,7 @@ class App(object):
         self.quickSortButton.setText(_translate("main_window", "Quick sort"))
 
     def create_window(self):
-        self.view_window.canvas = GraphWin("Sort view_windowize", width, length)
+        self.view_window.canvas = GraphWin("Sorting visualizer", width, length)
         self.view_window.canvas.setBackground(black_color)
 
     def shuffling(self):
