@@ -1,20 +1,21 @@
 import time
-from graphics_sticks.graphics import *
+from views.graphics import Rectangle, Point, color_rgb
+
 class Draw:
-    def __init__(self, Length, Width, Stick_length, Diff_length, white_color, black_color, array, delay):
-        self.Length = Length
-        self.Width = Width
-        self.Stick_length = Stick_length
-        self.Diff_length = Diff_length
+    def __init__(self, length, width, stick_length, space_sticks, white_color, black_color, array, delay):
+        self.length = length
+        self.width = width
+        self.stick_length = stick_length
+        self.space_sticks = space_sticks
         self.white_color = white_color
         self.black_color = black_color
         self.array = array
         self.rectangles = []
         self.delay = delay
 
-    def Stick(self, value, pos):
-        return Rectangle(Point(pos * (self.Stick_length + self.Diff_length), self.Length),
-                         Point(pos * (self.Stick_length + self.Diff_length) + self.Stick_length, self.Length - value))
+    def stick(self, value, pos):
+        return Rectangle(Point(pos * (self.stick_length + self.space_sticks), self.length),
+                         Point(pos * (self.stick_length + self.space_sticks) + self.stick_length, self.length - value))
 
     def creating_retangles(self):
 
@@ -24,7 +25,7 @@ class Draw:
             self.rectangles = []
 
         for i in range(len(self.array)):
-            self.rectangles.append(self.Stick(self.array[i], i))
+            self.rectangles.append(self.stick(self.array[i], i))
 
         for i in range(len(self.rectangles)):
             self.rectangles[i].setFill(self.white_color)
@@ -40,8 +41,8 @@ class Draw:
         self.rectangles[x].setFill(self.black_color)
         self.rectangles[y].setFill(self.black_color)
         self.array[x], self.array[y] = self.array[y], self.array[x]
-        self.rectangles[x] = self.Stick(self.array[x], x)
-        self.rectangles[y] = self.Stick(self.array[y], y)
+        self.rectangles[x] = self.stick(self.array[x], x)
+        self.rectangles[y] = self.stick(self.array[y], y)
         self.rectangles[x].setFill(self.white_color)
         self.rectangles[y].setFill(self.white_color)
         self.rectangles[x].draw(self.canvas)
