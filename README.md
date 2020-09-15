@@ -2,17 +2,22 @@
 
 This is app which show how sorting algorithms works.
 
-Clone reposiroty from github.
+**1.** Clone reposiroty from github.
 ~~~
 git clone https://github.com/4llower/sort-visualize-statistics
 ~~~
 
-Install necessary libraries.
+**2.** Install tkinter
+~~~
+sudo apt-get install python3-tk
+~~~
+
+**3.** Install necessary libraries.
 ~~~
 pip install -r requirements.txt
 ~~~
 
-Get started.
+**4.** Get started.
 ~~~
 python main.py
 ~~~

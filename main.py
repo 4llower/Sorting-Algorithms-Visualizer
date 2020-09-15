@@ -23,12 +23,18 @@ black_color = color_rgb(0, 0, 0)
 # constants
 
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow, Visual):
-        self.Visual = Visual
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(567, 427)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+class App(object):
+    def buttons_events_init(self):
+        self.quickSortButton.clicked.connect(self.make_quick_sort)
+        self.mergeSortButton.clicked.connect(self.make_merge_sort)
+        self.bubbleSortButton.clicked.connect(self.make_bubble_sort)
+        self.countSortButton.clicked.connect(self.make_count_sort)
+        self.LSDSortButton.clicked.connect(self.make_LSD_sort)
+    
+    def ui_init(self, Window):
+        Window.setObjectName("Window")
+        Window.resize(567, 427)
+        self.centralwidget = QtWidgets.QWidget(Window)
         self.centralwidget.setObjectName("centralwidget")
         self.widget = QtWidgets.QWidget(self.centralwidget)
         self.widget.setGeometry(QtCore.QRect(230, 90, 106, 190))
@@ -51,26 +57,25 @@ class Ui_MainWindow(object):
         self.quickSortButton = QtWidgets.QPushButton(self.widget)
         self.quickSortButton.setObjectName("quickSortButton")
         self.gridLayout.addWidget(self.quickSortButton, 3, 0, 1, 1)
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.quickSortButton.clicked.connect(self.make_quick_sort)
-        self.mergeSortButton.clicked.connect(self.make_merge_sort)
-        self.bubbleSortButton.clicked.connect(self.make_bubble_sort)
-        self.countSortButton.clicked.connect(self.make_count_sort)
-        self.LSDSortButton.clicked.connect(self.make_LSD_sort)
+        Window.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+    def setup_ui(self, Window, Visual):
+        self.Visual = Visual
+        self.ui_init(Window)
+        self.buttons_events_init()
+        self.retranslate_ui(Window)
+        QtCore.QMetaObject.connectSlotsByName(Window)
 
-    def retranslateUi(self, MainWindow):
+    def retranslate_ui(self, Window):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Sort Visualizer"))
-        self.mergeSortButton.setText(_translate("MainWindow", "Merge sort"))
-        self.LSDSortButton.setText(_translate("MainWindow", "LSD Sort"))
-        self.countSortButton.setText(_translate("MainWindow", "Count sort"))
-        self.bubbleSortButton.setText(_translate("MainWindow", "Bubble sort"))
-        self.quickSortButton.setText(_translate("MainWindow", "Quick sort"))
+        Window.setWindowTitle(_translate("Window", "Sort Visualizer"))
+        self.mergeSortButton.setText(_translate("Window", "Merge sort"))
+        self.LSDSortButton.setText(_translate("Window", "LSD Sort"))
+        self.countSortButton.setText(_translate("Window", "Count sort"))
+        self.bubbleSortButton.setText(_translate("Window", "Bubble sort"))
+        self.quickSortButton.setText(_translate("Window", "Quick sort"))
 
-    def createWindow(self):
+    def create_window(self):
         self.Visual.canvas = GraphWin("Sort visualize", Width, Length)
         self.Visual.canvas.setBackground(black_color)
 
@@ -84,7 +89,7 @@ class Ui_MainWindow(object):
 
     def make_merge_sort(self):
         self.Visual.delay = 0
-        self.createWindow()
+        self.create_window()
         self.shuffling()
         try:
             mergeSorting(self.Visual, 0, len(self.Visual.array) - 1)
@@ -94,7 +99,7 @@ class Ui_MainWindow(object):
 
     def make_quick_sort(self):
         self.Visual.delay = 0.01
-        self.createWindow()
+        self.create_window()
         self.shuffling()
         try:
             quickSorting(self.Visual, 0, len(self.Visual.array) - 1)
@@ -104,7 +109,7 @@ class Ui_MainWindow(object):
 
     def make_count_sort(self):
         self.Visual.delay = 0.01
-        self.createWindow()
+        self.create_window()
         self.shuffling()
         try:
             countSorting(self.Visual)
@@ -114,7 +119,7 @@ class Ui_MainWindow(object):
 
     def make_bubble_sort(self):
         self.Visual.delay = 0
-        self.createWindow()
+        self.create_window()
         self.shuffling()
         try:
             bubbleSorting(self.Visual)
@@ -124,7 +129,7 @@ class Ui_MainWindow(object):
 
     def make_LSD_sort(self):
         self.Visual.delay = 0
-        self.createWindow()
+        self.create_window()
         self.shuffling()
         try:
             LSDsorting(self.Visual, 0, len(self.Visual.array) - 1, 10 ** int(math.log10(max(self.Visual.array))))
@@ -139,10 +144,10 @@ def main():
     Visual = Draw(Length, Width, Stick_length, 0, white_color, black_color, temp, 0)
 
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow, Visual)
-    MainWindow.show()
+    Window = QtWidgets.QMainWindow()
+    ui = App()
+    ui.setup_ui(Window, Visual)
+    Window.show()
     sys.exit(app.exec_())
 
 
