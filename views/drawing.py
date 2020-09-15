@@ -36,7 +36,7 @@ class Draw:
             time.sleep(0.0010)
             self.rectangles[i].setFill(color_rgb(0, 255, 0))
 
-    def visualize_swap(self, x, y):
+    def view_windowize_swap(self, x, y):
         time.sleep(self.delay)
         self.rectangles[x].setFill(self.black_color)
         self.rectangles[y].setFill(self.black_color)

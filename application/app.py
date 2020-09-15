@@ -1,9 +1,8 @@
-from sortings import *
-from views import GraphicsError, color_rgb, GraphWin
 import math
 import random
-
 from PyQt5 import QtCore, QtGui, QtWidgets
+from sortings import *
+from views import GraphicsError, color_rgb, GraphWin
 
 white_color = color_rgb(255, 255, 255)
 black_color = color_rgb(0, 0, 0)
@@ -18,10 +17,10 @@ class App(object):
         self.countSortButton.clicked.connect(self.make_count_sort)
         self.LSDSortButton.clicked.connect(self.make_LSD_sort)
     
-    def ui_init(self, Window):
-        Window.setObjectName("Window")
-        Window.resize(567, 427)
-        self.centralwidget = QtWidgets.QWidget(Window)
+    def ui_init(self, main_window):
+        main_window.setObjectName("main_window")
+        main_window.resize(567, 427)
+        self.centralwidget = QtWidgets.QWidget(main_window)
         self.centralwidget.setObjectName("centralwidget")
         self.widget = QtWidgets.QWidget(self.centralwidget)
         self.widget.setGeometry(QtCore.QRect(230, 90, 106, 190))
@@ -44,82 +43,82 @@ class App(object):
         self.quickSortButton = QtWidgets.QPushButton(self.widget)
         self.quickSortButton.setObjectName("quickSortButton")
         self.gridLayout.addWidget(self.quickSortButton, 3, 0, 1, 1)
-        Window.setCentralWidget(self.centralwidget)
+        main_window.setCentralWidget(self.centralwidget)
 
-    def setup_ui(self, Window, Visual):
-        self.Visual = Visual
-        self.ui_init(Window)
+    def setup_ui(self, main_window, view_window):
+        self.view_window = view_window
+        self.ui_init(main_window)
         self.buttons_events_init()
-        self.retranslate_ui(Window)
-        QtCore.QMetaObject.connectSlotsByName(Window)
+        self.retranslate_ui(main_window)
+        QtCore.QMetaObject.connectSlotsByName(main_window)
 
-    def retranslate_ui(self, Window):
+    def retranslate_ui(self, main_window):
         _translate = QtCore.QCoreApplication.translate
-        Window.setWindowTitle(_translate("Window", "Sort Visualizer"))
-        self.mergeSortButton.setText(_translate("Window", "Merge sort"))
-        self.LSDSortButton.setText(_translate("Window", "LSD Sort"))
-        self.countSortButton.setText(_translate("Window", "Count sort"))
-        self.bubbleSortButton.setText(_translate("Window", "Bubble sort"))
-        self.quickSortButton.setText(_translate("Window", "Quick sort"))
+        main_window.setWindowTitle(_translate("main_window", "Sort view_windowizer"))
+        self.mergeSortButton.setText(_translate("main_window", "Merge sort"))
+        self.LSDSortButton.setText(_translate("main_window", "LSD Sort"))
+        self.countSortButton.setText(_translate("main_window", "Count sort"))
+        self.bubbleSortButton.setText(_translate("main_window", "Bubble sort"))
+        self.quickSortButton.setText(_translate("main_window", "Quick sort"))
 
     def create_window(self):
-        self.Visual.canvas = GraphWin("Sort visualize", width, length)
-        self.Visual.canvas.setBackground(black_color)
+        self.view_window.canvas = GraphWin("Sort view_windowize", width, length)
+        self.view_window.canvas.setBackground(black_color)
 
     def shuffling(self):
-        random.shuffle(self.Visual.array)
-        self.Visual.creating_retangles()
+        random.shuffle(self.view_window.array)
+        self.view_window.creating_retangles()
 
     def end_sorting(self):
-        self.Visual.complete()
-        self.Visual.canvas.close()
+        self.view_window.complete()
+        self.view_window.canvas.close()
 
     def make_merge_sort(self):
-        self.Visual.delay = 0
+        self.view_window.delay = 0
         self.create_window()
         self.shuffling()
         try:
-            mergeSorting(self.Visual, 0, len(self.Visual.array) - 1)
+            mergeSorting(self.view_window, 0, len(self.view_window.array) - 1)
         except GraphicsError:
             pass
         self.end_sorting()
 
     def make_quick_sort(self):
-        self.Visual.delay = 0.01
+        self.view_window.delay = 0.01
         self.create_window()
         self.shuffling()
         try:
-            quickSorting(self.Visual, 0, len(self.Visual.array) - 1)
+            quickSorting(self.view_window, 0, len(self.view_window.array) - 1)
         except GraphicsError:
             pass
         self.end_sorting()
 
     def make_count_sort(self):
-        self.Visual.delay = 0.01
+        self.view_window.delay = 0.01
         self.create_window()
         self.shuffling()
         try:
-            countSorting(self.Visual)
+            countSorting(self.view_window)
         except GraphicsError:
             pass
         self.end_sorting()
 
     def make_bubble_sort(self):
-        self.Visual.delay = 0
+        self.view_window.delay = 0
         self.create_window()
         self.shuffling()
         try:
-            bubbleSorting(self.Visual)
+            bubbleSorting(self.view_window)
         except GraphicsError:
             pass
         self.end_sorting()
 
     def make_LSD_sort(self):
-        self.Visual.delay = 0
+        self.view_window.delay = 0
         self.create_window()
         self.shuffling()
         try:
-            LSDsorting(self.Visual, 0, len(self.Visual.array) - 1, 10 ** int(math.log10(max(self.Visual.array))))
+            LSDsorting(self.view_window, 0, len(self.view_window.array) - 1, 10 ** int(math.log10(max(self.view_window.array))))
         except GraphicsError:
             pass
 

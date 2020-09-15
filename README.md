@@ -1,10 +1,10 @@
-# Sorting algorithm visualizer
+# Sorting algorithm view_windowizer
 
 This is app which show how sorting algorithms works.
 
 **1.** Clone reposiroty from github.
 ~~~
-git clone https://github.com/4llower/sort-visualize-statistics
+git clone https://github.com/4llower/sort-view_windowize-statistics
 ~~~
 
 **2.** Install tkinter
