@@ -4,22 +4,16 @@ This is app which show how sorting algorithms works.
 
 **1.** Clone reposiroty from github.
 ~~~
-git clone https://github.com/4llower/sort-view_windowize-statistics
+git clone https://github.com/4llower/Sorting-Algorithms-Visualizer
+~~~
+**2.** Install necessary libraries.
+~~~
+pip3 install -r requirements.txt
 ~~~
 
-**2.** Install tkinter
+**3.** Get started.
 ~~~
-sudo apt-get install python3-tk
-~~~
-
-**3.** Install necessary libraries.
-~~~
-pip install -r requirements.txt
-~~~
-
-**4.** Get started.
-~~~
-python main.py
+python3 main.py
 ~~~
 
 # Algorithms
